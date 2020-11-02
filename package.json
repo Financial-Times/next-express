@@ -23,7 +23,7 @@
     "next-metrics": "^5.0.0"
   },
   "devDependencies": {
-    "@financial-times/n-gage": "^3.12.0",
+    "@financial-times/n-gage": "^8.0.0",
     "chai": "^4.1.2",
     "coveralls": "^3.0.0",
     "fetch-mock": "^5.1.2",
