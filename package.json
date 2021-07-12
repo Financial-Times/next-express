@@ -4,6 +4,7 @@
   "main": "main.js",
   "scripts": {
     "test": "make test",
+    "test:types": "tsc",
     "commit": "commit-wizard",
     "precommit": "node_modules/.bin/secret-squirrel",
     "commitmsg": "node_modules/.bin/secret-squirrel-commitmsg",
@@ -17,15 +18,19 @@
     "debounce": "^1.1.0",
     "denodeify": "^1.2.1",
     "express": "^4.16.3",
-    "isomorphic-fetch": "^2.2.1",
     "n-health": "^5.0.0",
     "next-metrics": "^5.0.23"
   },
   "devDependencies": {
-    "@financial-times/n-gage": "^3.12.0",
+    "@financial-times/n-gage": "3.12.0",
+    "@tsconfig/node12": "1.0.9",
+    "@types/express": "4.17.12",
+    "@types/isomorphic-fetch": "0.0.35",
+    "@types/node": "12.20.15",
     "chai": "^4.1.2",
     "coveralls": "^3.0.0",
     "fetch-mock": "^5.1.2",
+    "isomorphic-fetch": "2.2.1",
     "istanbul": "^0.4.5",
     "mocha": "^3.5.3",
     "npm-prepublish": "^1.2.3",
@@ -34,7 +39,8 @@
     "sinon": "^4.5.0",
     "sinon-chai": "^3.0.0",
     "snyk": "^1.167.2",
-    "supertest": "^3.0.0"
+    "supertest": "^3.0.0",
+    "typescript": "4.3.5"
   },
   "bin": {
     "n-express-generate-certificate": "bin/n-express-generate-certificate.sh"
@@ -43,5 +49,8 @@
     "node": "12.x"
   },
   "config": {},
-  "false": {}
+  "false": {},
+  "volta": {
+    "node": "12.22.1"
+  }
 }

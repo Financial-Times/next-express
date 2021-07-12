@@ -1,10 +1,19 @@
+/**
+ * @typedef {import("@typings/metrics")} Metrics
+ */
+
 let lastCheckOk = true;
 let lastCheckOutput = 'All services\' metrics are set up in Next-metrics';
 let panicGuide = 'Don\'t panic';
+
+/** @type {Date} */
 let lastCheckTime;
 
+/**
+ * @type {Metrics.InitHealthCheck}
+ */
 module.exports = {
-	setAppName: appName => {
+	setAppName: (appName) => {
 		return {
 			getStatus: () => {
 				return {
@@ -21,7 +30,7 @@ module.exports = {
 			}
 		};
 	},
-	updateCheck: unregisteredServices => {
+	updateCheck: (unregisteredServices) => {
 		lastCheckTime = new Date();
 
 		if (Object.keys(unregisteredServices).length > 0) {

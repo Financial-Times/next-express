@@ -1,4 +1,10 @@
+/**
+ * @typedef {import("@typings/n-express")} NExpress
+ */
 
+/**
+ * @type {NExpress.Callback}
+ */
 function AnonymousModel (req) {
 	if (req.get('FT-Anonymous-User') === 'true') {
 		this.userIsLoggedIn = false;
@@ -18,12 +24,19 @@ const anonModels = {
 	FirstClickFreeModel : FirstClickFreeModel
 };
 
+/**
+ * @param {NExpress.Request} req
+ * @param {NExpress.Response} res
+ */
 function showFirstClickFree (req, res) {
 	return res.locals.flags.firstClickFree &&
 			req.get('FT-Access-Decision') === 'GRANTED' &&
 			req.get('FT-Access-Decision-Policy') === 'PRIVILEGED_REFERER_POLICY';
 }
 
+/**
+ * @type {NExpress.Callback}
+ */
 function anonymousMiddleware (req, res, next) {
 	res.locals.anon = new anonModels.AnonymousModel(req);
 	res.locals.firstClickFreeModel =

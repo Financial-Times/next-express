@@ -1,5 +1,13 @@
+/**
+ * @typedef {import("@typings/n-express")} NExpress
+ */
+
 const normalizeName = require('./normalize-name');
 
+/**
+ * @param {NExpress.AppMeta} options
+ * @returns {NExpress.AppMeta & {description: string}}
+ */
 module.exports = options => {
 	let name = options.name;
 	let description = '';

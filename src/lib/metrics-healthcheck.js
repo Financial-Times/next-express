@@ -1,7 +1,14 @@
+/**
+ * @typedef {import("@typings/metrics")} Metrics
+ */
+
 const metrics = require('next-metrics');
 
+/**
+ * @param {string} appName
+ * @returns {Metrics.Healthcheck}
+ */
 module.exports = (appName) => {
-
 	return {
 		getStatus: () => {
 			return {
@@ -17,5 +24,4 @@ module.exports = (appName) => {
 			};
 		}
 	};
-
 };

@@ -1,3 +1,8 @@
+/**
+ * @param {string|string[]} val
+ * @param {Set<string>} set
+ * @returns {string}
+ */
 const extendVary = (val, set) => {
 	val = Array.isArray(val) ? val : val.split(',');
 	val.forEach(header => {
@@ -6,8 +11,13 @@ const extendVary = (val, set) => {
 	return Array.from(set).join(', ');
 };
 
-module.exports = (req, res, next) => {
+/**
+ * @type {import("@typings/n-express").Callback}
+ */
+module.exports = (_req, res, next) => {
 	const resSet = res.set;
+
+	/** @type {Set<string>} */
 	const varyOn = new Set([]);
 
 	res.set('vary', Array.from(varyOn).join(', '));
@@ -19,7 +29,7 @@ module.exports = (req, res, next) => {
 	res.set = function (name, val) {
 
 		if (arguments.length === 2 && typeof name === 'string') {
-			if (name.toLowerCase() === 'vary') {
+			if (name.toLowerCase() === 'vary' && val) {
 				val = extendVary(val, varyOn);
 			}
 			return resSet.call(res, name, val);
@@ -44,7 +54,7 @@ module.exports = (req, res, next) => {
 		}
 	};
 
-	res.unvaryAll = function (preset) {
+	res.unvaryAll = function (/** @type {string} */ preset) {
 		if (preset === 'wrapper') {
 			// TODO need to port this to n-ui ,and rename as n-ui.
 			// Not sure if it's ever used

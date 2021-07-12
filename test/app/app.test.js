@@ -108,7 +108,7 @@ describe('simple app', function () {
 			sinon.stub(metrics, 'count');
 
 			const app = getApp();
-			await app.listen()
+			await app.listen();
 
 			expect(metrics.count.calledWith('express.start')).to.be.true;
 			metrics.count.restore();
@@ -129,7 +129,7 @@ describe('simple app', function () {
 				fetch('http://bertha.ig.ft.com/ghjgjh', {
 					timeout: 50
 				}).catch(() => {})
-			])
+			]);
 
 			expect(raven.captureMessage.called).to.be.false;
 			raven.captureMessage.restore();
